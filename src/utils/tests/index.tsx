@@ -35,4 +35,3 @@ export const waitForAsync = () => new Promise((resolve) => setTimeout(resolve, 0
 // Re-export tudo
 export * from '@testing-library/react-native';
 export { appThemes, mockTheme, mockUnistylesWithTheme, customRender as render };
-
