@@ -76,7 +76,7 @@ const breakpoints = {
   xl: 1200,
 };
 
-const appThemes = {
+export const appThemes = {
   light: { ...lightTheme, ...baseTheme },
   dark: { ...darkTheme, ...baseTheme },
 };
