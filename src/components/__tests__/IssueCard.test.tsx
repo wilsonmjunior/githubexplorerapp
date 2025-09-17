@@ -61,7 +61,12 @@ const mockIssueWithManyLabels = {
     { id: 1, name: 'enhancement', color: 'blue', description: 'New feature' },
     { id: 2, name: 'good first issue', color: 'green', description: 'Good for newcomers' },
     { id: 3, name: 'help wanted', color: 'yellow', description: 'Extra attention is needed' },
-    { id: 4, name: 'documentation', color: 'purple', description: 'Improvements to documentation' },
+    {
+      id: 4,
+      name: 'documentation',
+      color: 'purple',
+      description: 'Improvements to documentation',
+    },
     { id: 5, name: 'question', color: 'pink', description: 'Further information is requested' },
   ],
 };
