@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Git Explore",
-    "slug": "gitexplore",
+    "name": "Git Explorer",
+    "slug": "gitexplorer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "gitexplore",
+    "scheme": "gitexplorer",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wilsonmjuniorx.gitexplore"
+      "bundleIdentifier": "com.wilsonmjuniorx.gitexplorer"
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +24,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.wilsonmjuniorx.gitexplore"
+      "package": "com.wilsonmjuniorx.gitexplorer"
     },
     "web": {
       "bundler": "metro",
