@@ -1,4 +1,4 @@
-# 🚀 AlymenteGit - GitHub Explorer Mobile App
+# 🚀 GitHub Explorer Mobile App
 
 A modern React Native mobile application for exploring GitHub repositories and issues, built with Expo and powered by a robust design system.
 
