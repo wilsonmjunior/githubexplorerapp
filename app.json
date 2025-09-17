@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "alymentegit",
-    "slug": "alymentegit",
+    "name": "Git Explore",
+    "slug": "gitexplore",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "alymentegit",
+    "scheme": "gitexplore",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
@@ -14,7 +14,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wilsonmjuniorx.gitexplore"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +23,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.wilsonmjuniorx.gitexplore"
     },
     "web": {
       "bundler": "metro",
