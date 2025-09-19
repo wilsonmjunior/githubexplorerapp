@@ -52,6 +52,15 @@ export default function TabLayout() {
             ),
           }}
         />
+        <Tabs.Screen
+          name="user"
+          options={{
+            title: 'Usuários',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="person" size={size} color={color} />
+            ),
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );
