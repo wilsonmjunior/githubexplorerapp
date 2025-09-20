@@ -2,10 +2,11 @@ import React from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { Text } from './Text';
+import { SizeToken } from './types';
 
 export type ButtonProps = {
   variant?: 'primary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+  size?: Extract<SizeToken, 'sm' | 'md' | 'lg'>;
   loading?: boolean;
   disabled?: boolean;
   onPress?: () => void;
