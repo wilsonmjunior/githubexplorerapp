@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { GitHubIssue } from '@/models/GitHubIssue';
+import { formatRelativeTime } from '@/utils/date';
 import { Avatar, Badge, Card, Text } from './ui';
 
 interface IssueCardProps {
@@ -13,23 +14,6 @@ interface IssueCardProps {
 
 export function IssueCard({ issue, onPress }: IssueCardProps) {
   const { theme } = useUnistyles();
-
-  const formatRelativeTime = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
-
-    if (diffInHours < 1) return 'agora há pouco';
-    if (diffInHours < 24) return `${diffInHours}h atrás`;
-
-    const diffInDays = Math.floor(diffInHours / 24);
-    if (diffInDays < 7) return `${diffInDays}d atrás`;
-
-    const diffInWeeks = Math.floor(diffInDays / 7);
-    if (diffInWeeks < 4) return `${diffInWeeks}sem atrás`;
-
-    return date.toLocaleDateString('pt-BR');
-  };
 
   return (
     <Card onPress={onPress}>

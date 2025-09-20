@@ -7,6 +7,8 @@ import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { useGetRepository } from '@/api/queries';
 import { Avatar, Badge, Button, Card, Header, Text } from '@/components/ui';
+import { formatDate } from '@/utils/date';
+import { formatNumber } from '@/utils/number';
 
 export default function RepositoryScreen() {
   const { owner, repo } = useLocalSearchParams<{ owner: string; repo: string }>();
@@ -16,20 +18,6 @@ export default function RepositoryScreen() {
   const insets = useSafeAreaInsets();
 
   const { data: repository, isLoading, isError, error, refetch } = useGetRepository(owner!, repo!);
-
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) {
-      return `${(num / 1000000).toFixed(1)}M`;
-    }
-    if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}k`;
-    }
-    return num.toString();
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR');
-  };
 
   const handleOpenIssues = () => {
     router.push({
