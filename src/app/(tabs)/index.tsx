@@ -1,11 +1,12 @@
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, RefreshControl, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { useGetRepositoriesSearch } from '@/api/queries/useGetRepositoriesSearch';
 import { RepositoryCard } from '@/components/RepositoryCard';
-import { Button, Header, Input, Text } from '@/components/ui';
+import { ListError, ListMessage } from '@/components/compound';
+import { Header, Input, Loading } from '@/components/ui';
 import { GitHubRepository } from '@/models/GitHubRepository';
 
 export default function SearchScreen() {
@@ -44,34 +45,30 @@ export default function SearchScreen() {
   const renderEmpty = () => {
     if (isLoading && !repositories?.length) {
       return (
-        <View style={styles.empty}>
-          <Text variant="body" size="md" color="muted">
+        <ListMessage>
+          <ListMessage.Title variant="body" size="md" color="muted">
             Buscando repositórios...
-          </Text>
-        </View>
+          </ListMessage.Title>
+        </ListMessage>
       );
     }
 
     if (searchQuery && !isError && !repositories?.length && !isLoading) {
       return (
-        <View style={styles.empty}>
-          <Text variant="body" size="md" color="muted">
-            Nenhum repositório encontrado
-          </Text>
-        </View>
+        <ListMessage>
+          <ListMessage.Title>Nenhum repositório encontrado</ListMessage.Title>
+        </ListMessage>
       );
     }
 
     if (!searchQuery) {
       return (
-        <View style={styles.empty}>
-          <Text variant="heading" size="lg" color="text">
-            GitHub Explorer
-          </Text>
-          <Text variant="body" size="md" color="muted" align="center">
+        <ListMessage>
+          <ListMessage.Title>GitHub Explorer</ListMessage.Title>
+          <ListMessage.Subtitle>
             Busque por repositórios, explore detalhes e acompanhe issues
-          </Text>
-        </View>
+          </ListMessage.Subtitle>
+        </ListMessage>
       );
     }
 
@@ -80,33 +77,28 @@ export default function SearchScreen() {
 
   const renderError = () => {
     return (
-      <View style={styles.error}>
-        <Text variant="body" size="md" color="danger">
+      <ListError>
+        <ListError.Title>
           {(error as any)?.message || 'Erro ao buscar repositórios'}
-        </Text>
-        <Button variant="outline" onPress={() => refetch()}>
-          Tentar Novamente
-        </Button>
-      </View>
+        </ListError.Title>
+
+        <ListError.Button onPress={() => refetch()}>Tentar Novamente</ListError.Button>
+      </ListError>
     );
   };
 
   const renderFooter = () => {
     if (isFetchingNextPage) {
-      return (
-        <View style={styles.footer}>
-          <ActivityIndicator size="large" color={theme.colors.primary} />
-        </View>
-      );
+      return <Loading />;
     }
 
     if (!hasNextPage && repositories?.length && repositories.length > 0) {
       return (
-        <View style={styles.footer}>
-          <Text variant="caption" size="sm" color="muted">
+        <ListMessage>
+          <ListMessage.Title variant="caption" size="sm">
             Todos os repositórios foram carregados
-          </Text>
-        </View>
+          </ListMessage.Title>
+        </ListMessage>
       );
     }
 
@@ -167,32 +159,12 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing.xl,
     marginTop: theme.spacing.xl,
   },
-  error: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: theme.spacing.xl,
-    gap: theme.spacing.md,
-  },
-  empty: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: theme.spacing.xl,
-    gap: theme.spacing.md,
-  },
-  emptySubtitle: {
-    textAlign: 'center',
-  },
+
   list: {
     flex: 1,
   },
   listContent: {
     gap: theme.spacing.md,
     paddingBottom: theme.spacing.lg,
-  },
-  footer: {
-    padding: theme.spacing.md,
-    alignItems: 'center',
   },
 }));
