@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as RNText, TextProps as RNTextProps } from 'react-native';
+import { Text as RNText } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { RadiusToken, SizeToken, SpacingToken, TextToken } from './types';
 
@@ -20,7 +20,7 @@ export type DesignTokens = {
   };
 };
 
-export type TextProps = Omit<RNTextProps, 'style'> & {
+export type TextProps = {
   variant?: TextToken;
   size?: SizeToken;
   color?: keyof DesignTokens['colors'];
